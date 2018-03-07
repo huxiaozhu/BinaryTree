@@ -16,9 +16,12 @@ public class MainActivity extends AppCompatActivity {
         tree.createTree();
         //前序
         tree.proOrderTraverse(tree.root);
+        tree.proOrderTraverseStack(tree.root);
         //中序
         tree.midOrderTraverse(tree.root);
+        tree.midOrderTraverseStack(tree.root);
         //后序
         tree.postOrderTraverse(tree.root);
+        tree.postOrderTraverseStack(tree.root);
     }
 }
