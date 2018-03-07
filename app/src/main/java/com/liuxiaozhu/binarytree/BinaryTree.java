@@ -10,6 +10,7 @@ import java.util.Stack;
  * Author：Created by liuxiaozhu on 2018/3/6.
  * Email: chenhuixueba@163.com
  * 二叉树
+ * 栈排序不是太理解
  */
 
 public class BinaryTree {
@@ -84,7 +85,7 @@ public class BinaryTree {
      * 栈实现前序遍历
      *
      * 利用栈实现循环先序遍历二叉树
-     * 这种实现类似于图的深度优先遍历（DFS）
+     *
      * 维护一个栈，将根节点入栈，然后只要栈不为空，出栈并访问，
      * 接着依次将访问节点的右节点、左节点入栈。
      * 这种方式应该是对先序遍历的一种特殊实现（看上去简单明了），
@@ -112,6 +113,7 @@ public class BinaryTree {
 
     /**
      * 栈实现中序遍历
+     *
      *  利用栈模拟递归过程实现循环先序遍历二叉树
      *  这种方式具备扩展性，它模拟递归的过程，
      *  将左子树点不断的压入栈，直到null，然后处理栈顶节点的右子树
@@ -137,6 +139,7 @@ public class BinaryTree {
 
     /**
      * 栈实现后序遍历
+     *
      * 后序遍历不同于先序和中序，它是要先处理完左右子树，然后再处理根(回溯)，
      * 所以需要一个记录哪些节点已经被访问的结构(可以在树结构里面加一个标记)，
      * 这里可以用map实现
@@ -144,8 +147,8 @@ public class BinaryTree {
      */
     public void postOrderTraverseStack(Node root) {
         if(root==null)return;
-        Stack<Node> s=new Stack<Node>();
-        Map<Node,Boolean> map=new HashMap<Node,Boolean>();
+        Stack<Node> s=new Stack<>();
+        Map<Node,Boolean> map=new HashMap<>();
         s.push(root);
         while(!s.isEmpty()){
             Node temp=s.peek();
@@ -164,7 +167,7 @@ public class BinaryTree {
             }
             Node t=s.pop();
             map.put(t,true);
-            Log.e("Stack中序遍历", "节点" + t.data);
+            Log.e("Stack后序遍历", "节点" + t.data);
         }
     }
 
