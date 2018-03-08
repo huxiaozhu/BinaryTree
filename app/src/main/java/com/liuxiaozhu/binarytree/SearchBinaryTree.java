@@ -141,17 +141,23 @@ public class SearchBinaryTree {
                             parent.rightNode = node.rightNode;
                         }
                     }
+                    node.rightNode.parent = parent;
                     node.parent = null;
                 } else {
                     //先找被删除节点右子树的最小值
                     TreeNode leftNode = getMinLeftTreeNode(node.rightNode);
 
                     leftNode.leftNode = node.leftNode;
+                    leftNode.leftNode.parent = leftNode;
 
                     TreeNode leftNodeP = leftNode.parent;
                     leftNodeP.leftNode = leftNode.rightNode;
+                    if (leftNode.rightNode != null) {
+                        leftNode.rightNode.parent = leftNode.parent;
+                    }
 
                     leftNode.rightNode = node.rightNode;
+                    leftNode.rightNode.parent = leftNode;
 
                     if (parent == null) {
                         root = leftNode;
@@ -162,6 +168,7 @@ public class SearchBinaryTree {
                             parent.rightNode = leftNode;
                         }
                     }
+                    leftNode.parent = parent;
                 }
             }
         }
