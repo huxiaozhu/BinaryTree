@@ -1,7 +1,5 @@
 package com.liuxiaozhu.binarytree;
 
-import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 /**
