@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * 二叉树的遍历
@@ -21,8 +23,21 @@ public class MainActivity extends AppCompatActivity {
         // 测试二叉排序树
 //        testSearchBinaryTree();
         // 测试haffMan树
-        testHaffManTree();
+//        testHaffManTree();
+        //测试AVL（平衡二叉树）
+//        testAVLTree();
+    }
 
+    /**
+     * 测试AVL（平衡二叉树）
+     */
+    private void testAVLTree() {
+        Integer[] nums = {5, 8, 2, 0, 1, -2};
+        AVLTree<Integer> tree = new AVLTree<>();
+        for (int i = 0; i < nums.length; i++) {
+            tree.insertElement(nums[i]);
+        }
+        Log.e("AVL", "" + tree.root.element);
     }
 
     /**
