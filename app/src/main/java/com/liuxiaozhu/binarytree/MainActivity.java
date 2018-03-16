@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         tree.postOrderTraverse(tree.root);
         tree.postOrderTraverseStack(tree.root);
     }
+
     /**
      * 测试HashMan树
      */

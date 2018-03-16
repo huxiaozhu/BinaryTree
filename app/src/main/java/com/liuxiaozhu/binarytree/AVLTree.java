@@ -20,8 +20,21 @@ public class AVLTree<E> {
     private int size;
 
     /**
+     * 中序遍历
+     * @param root
+     */
+    public void midOrderDisplay(Node root) {
+        if (root == null) {
+            return;
+        } else {
+            midOrderDisplay(root.left);
+            System.out.println("midOrder: " + root.element);
+            midOrderDisplay(root.right);
+        }
+    }
+
+    /**
      * 插入元素
-     *
      * @param element
      * @return
      */
@@ -87,7 +100,8 @@ public class AVLTree<E> {
     private void fixAfterInsertion(Node<E> parent) {
         if (parent.balance == 2) {
             leftBalance(parent);
-        } else if (parent.balance == -1) {
+        }
+        if (parent.balance == -2) {
             rightBalance(parent);
         }
     }
@@ -143,7 +157,6 @@ public class AVLTree<E> {
                 leftRoate(t);
                 t.balance = EH;
                 tr.balance = EH;
-
                 break;
             case LH:
                 //根节点的右子树的左子树上插入
@@ -217,7 +230,7 @@ public class AVLTree<E> {
                 nodeR.left.parent = node;
             }
             //2.把node制定给node右子树的左节点
-            nodeR.left = node;
+            nodeR.parent = node.parent;
             //3.将node右子树的parent指定
             if (node.parent == null) {
                 root = nodeR;
@@ -228,7 +241,8 @@ public class AVLTree<E> {
                     node.parent.right = nodeR;
                 }
             }
-            nodeR.parent = node.parent;
+            nodeR.left = node;
+            node.parent = nodeR;
         }
     }
 
